@@ -32,6 +32,8 @@ public:
 
     double GetM() const { return m; }
     double GetR() const { return R; }
+    void AddForce(const Vector3d &f) { F += f; }
+    Vector3d GetPos() const { return r; }
 };
 
 #endif // CUERPO_H
