@@ -7,6 +7,8 @@
 using namespace Eigen;
 using namespace std;
 
+const double G = 6.67430e-11; 
+
 int main() {
     int N;
     double dt, tmax;
