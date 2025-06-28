@@ -5,8 +5,11 @@ BIN = bin/gravedad
 
 all: $(BIN)
 
-$(BIN): $(SRC)
+$(BIN): bin $(SRC)
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
+bin:
+	mkdir -p bin
 
 run: all
 	./$(BIN)
