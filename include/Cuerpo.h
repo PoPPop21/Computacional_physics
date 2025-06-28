@@ -2,7 +2,7 @@
 #define CUERPO_H
 
 #include <Eigen/Dense>
-usigng namespace Eigen;
+using namespace Eigen;
 
 /**
 * Clase que representa un cuerpo celeste en el sistema gravitacional.

@@ -15,7 +15,7 @@ void Cuerpo::BorreFuerza() {
 }
 
 void Cuerpo::AdicioneFuerzaGravitacional(Cuerpo &otro) {
-    Vector3d dr = otro.r - r; // Vector de posición relativo
+    Eigen::Vector3d dr = otro.r - r; // Vector de posición relativo
     double d2 = dr.squaredNorm(); // Distancia al cuadrado
     double d3 = pow(d2, 1.5); // Distancia al cubo
     Vector3d fuerza = G * m * otro.m * dr / d3; // Fuerza gravitacional
