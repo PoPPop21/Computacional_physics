@@ -34,18 +34,26 @@ int main() {
             output << " " << c.Getx() << " " << c.Gety() << " " << c.Getz()
                     << " " << c.GetVx() << " " << c.GetVy() << " " << c.GetVz();
         output << "\n";
+     
+        for (auto &c : cuerpos) c.MuevaR(dt); //Mover posiciones r
+
+        vector<Vector3d> F_antes(N);
+        for (int i = 0; i < N; ++i)
+            F_antes[i] = cuerpos[i].GetF();
 
         for (auto &c : cuerpos) c.BorreFuerza();
-
-        for (int i = 0; i < N; i++)
+        for (int i=0; i < N; ++i) 
             for (int j = i+1; j < N; j++) {
-                cuerpos[i].AdicioneFuerzaGravitacional(cuerpos[j]);
-                cuerpos[j].AdicioneFuerzaGravitacional(cuerpos[i]);
-            }
+                if (i != j) {
+                    cuerpos[i].AdicioneFuerzaGravitacional(cuerpos[j]);
+                    cuerpos[j].AdicioneFuerzaGravitacional(cuerpos[i]);
+                }
+        }
+        for (int i = 0; i < N; ++i) {
+            cuerpos[i].MuevaV(dt, F_antes[i]); //Mover velocidades V
+        }
 
-        for (auto &c : cuerpos) c.Muevase(dt);
     }
-
     output.close();
     return 0;
 }

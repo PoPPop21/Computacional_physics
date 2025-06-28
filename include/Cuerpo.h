@@ -15,9 +15,11 @@ private:
 
 public:
     void Inicie(double m0, double R0, const Vector3d &r0, const Vector3d &V0);
+    Vector3d GetF() const { return F; }
     void BorreFuerza();
     void AdicioneFuerzaGravitacional(Cuerpo &otro);
-    void Muevase(double dt);
+    void MuevaR(double dt);
+    void MuevaV(double dt, const Vector3d &F_antes);
 
     // Getters
     double Getx() const { return r.x(); }
