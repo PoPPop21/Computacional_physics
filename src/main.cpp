@@ -29,11 +29,11 @@ int main() {
     ofstream output("resultados/datosN.dat");
 
      for (double t = 0; t <= tmax; t += dt) {
-        archivo << t;
+        output << t;
         for (auto &c : cuerpos)
-            archivo << " " << c.Getx() << " " << c.Gety() << " " << c.Getz()
+            output << " " << c.Getx() << " " << c.Gety() << " " << c.Getz()
                     << " " << c.GetVx() << " " << c.GetVy() << " " << c.GetVz();
-        archivo << "\n";
+        output << "\n";
 
         for (auto &c : cuerpos) c.BorreFuerza();
 
@@ -46,6 +46,6 @@ int main() {
         for (auto &c : cuerpos) c.Muevase(dt);
     }
 
-    archivo.close();
+    output.close();
     return 0;
 }
