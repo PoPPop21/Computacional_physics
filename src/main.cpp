@@ -28,33 +28,24 @@ int main() {
     }
     ofstream output("resultados/datosN.dat");
 
-    for (double t = 0; t < tmax; t += dt) {
-        // Borrar fuerzas
-        for (auto &cuerpo : cuerpos) {
-            cuerpo.BorreFuerza();
-        }
+     for (double t = 0; t <= tmax; t += dt) {
+        archivo << t;
+        for (auto &c : cuerpos)
+            archivo << " " << c.Getx() << " " << c.Gety() << " " << c.Getz()
+                    << " " << c.GetVx() << " " << c.GetVy() << " " << c.GetVz();
+        archivo << "\n";
 
-        // Calcular fuerzas gravitacionales
-        for (int i = 0; i < N; ++i) {
-            for (int j = i + 1; j < N; ++j) {
+        for (auto &c : cuerpos) c.BorreFuerza();
+
+        for (int i = 0; i < N; i++)
+            for (int j = i+1; j < N; j++) {
                 cuerpos[i].AdicioneFuerzaGravitacional(cuerpos[j]);
                 cuerpos[j].AdicioneFuerzaGravitacional(cuerpos[i]);
             }
-        }
 
-        // Mover cuerpos
-        for (auto &cuerpo : cuerpos) {
-            cuerpo.Muevase(dt);
-        }
-
-        // Guardar resultados
-        for (const auto &cuerpo : cuerpos) {
-            output << cuerpo.Getx() << " " << cuerpo.Gety() << " " << cuerpo.Getz() << " "
-                   << cuerpo.GetVx() << " " << cuerpo.GetVy() << " " << cuerpo.GetVz() << " "
-                   << cuerpo.GetM() << " " << cuerpo.GetR() << endl;
-        }
+        for (auto &c : cuerpos) c.Muevase(dt);
     }
-    output.close();
-    cout << "Simulación completada. Resultados guardados en 'resultados/datosN.dat'." << endl;
+
+    archivo.close();
     return 0;
 }
