@@ -17,13 +17,18 @@ void Cuerpo::BorreFuerza() {
 void Cuerpo::AdicioneFuerzaGravitacional(Cuerpo &otro) {
     Eigen::Vector3d dr = otro.r - r; // Vector de posición relativo
     double d2 = dr.squaredNorm(); // Distancia al cuadrado
-    double d3 = pow(d2, 1.5); // Distancia al cubo
-    Vector3d fuerza = -G * m * otro.m * dr / d3; // Fuerza gravitacional
+    double d3 = pow(d2 + 1e-10, 1.5); // Distancia al cubo
+    Vector3d fuerza = G * m * otro.m * dr / d3; // Fuerza gravitacional
     F += fuerza; // Acumula la fuerza
 }
 
-void Cuerpo::Muevase(double dt) {
-    // Actualiza la velocidad y posición del cuerpo
-    V += 0.5 * F / m * dt; // Actualiza la velocidad (Verlet)
-    r += V * dt + 0.5 * F / m * dt * dt; // Actualiza la posición
+void Cuerpo::MuevaR(double dt) {
+    // Actualiza la posición del cuerpo
+    r += V * dt + 0.5 * F / m * dt * dt;  //Movimiento de posición
+
+}
+
+void Cuerpo::MuevaV(double dt,  const Vector3d &F_antes) {
+    // Actualiza la velocidad del cuerpo
+    V += 0.5 * (F + F_antes) / m * dt; // (Verlet)
 }
