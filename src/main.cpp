@@ -19,7 +19,7 @@ int main() {
 
     vector<Cuerpo> cuerpos(N);
     for (int i = 0; i < N; ++i) {
-        double m, R, x, y, z, Vx, Vy, Vz
+        double m, R, x, y, z, Vx, Vy, Vz;
         cout << "Ingrese los parámetros del cuerpo " << i + 1 << " (m R x y z Vx Vy Vz): ";
         cin >> m >> R >> x >> y >> z >> Vx >> Vy >> Vz;
         Vector3d r(x, y, z);
