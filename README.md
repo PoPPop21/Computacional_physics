@@ -1,4 +1,4 @@
-#🩰Simulación del sistema Gravitacional de N cuerpos 
+# 🩰Simulación del sistema Gravitacional de N cuerpos 
 
 Este proyecto implmenta una simulación del problema de N cuerpos que interactuan gravitacionalmente entre sí. Utiliza:
 
