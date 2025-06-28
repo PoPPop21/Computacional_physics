@@ -43,12 +43,14 @@ int main() {
 
         for (auto &c : cuerpos) c.BorreFuerza();
         for (int i=0; i < N; ++i) 
-            for (int j = i+1; j < N; j++) {
-                if (i != j) {
-                    cuerpos[i].AdicioneFuerzaGravitacional(cuerpos[j]);
-                    cuerpos[j].AdicioneFuerzaGravitacional(cuerpos[i]);
-                }
-        }
+            for (int j = i+1; j < N; ++j) {
+                Vector3d dr = cuerpos[j].GetPos() - cuerpos[i].GetPos();
+                double d2 = dr.squaredNorm();
+                double d3 = pow(d2 + 1e-10, 1.5); 
+                Vector3d Fij = G * cuerpos[i].GetM() * cuerpos[j].GetM() * dr / d3;
+                cuerpos[i].AddForce(Fij);      // Fij sobre i
+                cuerpos[j].AddForce(-Fij);
+            } 
         for (int i = 0; i < N; ++i) {
             cuerpos[i].MuevaV(dt, F_antes[i]); //Mover velocidades V
         }
