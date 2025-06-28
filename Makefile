@@ -6,7 +6,7 @@ BIN = bin/gravedad
 all: $(BIN)
 
 $(BIN): bin $(SRC)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $(SRC)
 
 bin:
 	mkdir -p bin
