@@ -1,0 +1,16 @@
+# Ignorar binarios y resultados
+bin/
+results/
+*.o
+
+# Ignorar archivos temporales
+*~
+*.swp
+
+# Ignorar documentación generada
+docs/
+html/
+latex/
+
+# Archivos de usuario o caché
+.vscode/
