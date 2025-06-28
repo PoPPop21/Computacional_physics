@@ -26,7 +26,7 @@ int main() {
         Vector3d V(Vx, Vy, Vz);
         cuerpos[i].Inicie(m, R, r, V);
     }
-    ofstream output("resultados/datosN.dat");
+    ofstream output("results/datosN.dat");
 
      for (double t = 0; t <= tmax; t += dt) {
         output << t;

@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Cargar datos
-data = np.loadtxt("results/datosN.dat")
+data = np.loadtxt("resultados/datosN.dat")
 t = data[:, 0]
 
 # Número de cuerpos (asume 6 columnas por cuerpo: x, y, z, vx, vy, vz)
