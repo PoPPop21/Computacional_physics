@@ -3,6 +3,11 @@
 * @version No se, hicimos varias :D
 * @date 2025-07-03
 */
+
+/** @defgroup SimulacionGravitacional Clases para simular cuerpos celestes Cuerpo.cpp
+ * @{
+ */
+
 #include "Cuerpo.h"
 #include "constantes.h" 
 /**
@@ -57,4 +62,5 @@ void Cuerpo::MuevaV(double dt,  const Vector3d &F_antes) {
     V += 0.5 * (F + F_antes) / m * dt; // (Verlet)
 }
 
+/** @} */ // fin del grupo
 
