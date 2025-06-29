@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comfortaa:wght@300;600&display=swap');
 
 body {
-  background: linear-gradient(to bottom, #a8dadc 0%, #f1faee 40%, #b7e4c7 100%);
+  background: linear-gradient(to bottom, #0c1cff 0%, #55adeb 40%, #29c637 60%, #044e0b 100% );
   background-attachment: fixed;
   font-family: 'Comfortaa', sans-serif;
   margin: 0;
