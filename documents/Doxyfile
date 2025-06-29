@@ -9,12 +9,13 @@ GENERATE_HTML           = YES
 HTML_STYLESHEET         = stylesheet.css
 HTML_HEADER             = header.html
 HTML_FOOTER             = footer.html
+IMAGE_PATH              = docs_assets
 
 # Activar generación de LaTex (PDF)
 GENERATE_LATEX          = NO
 
 # Carpeta de salida 
-OUTPUT_DIRECTORY        = documents
+OUTPUT_DIRECTORY        = html 
 
 # Incluir documentación privada
 EXTRACT_PRIVATE         = YES
