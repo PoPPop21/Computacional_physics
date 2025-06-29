@@ -3,6 +3,10 @@
 * @version No se, hicimos varias :D
 * @date 2025-07-03
 */
+
+/** @defgroup Encabezado Cuerpo.h para la simulación gravitacional de N cuerpos. 
+ * @{
+ */
 #ifndef CUERPO_H
 #define CUERPO_H
 
@@ -72,3 +76,4 @@ public:
 };
 
 #endif // CUERPO_H
+/** @} */ // fin del grupo

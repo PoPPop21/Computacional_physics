@@ -3,6 +3,11 @@
 * @version No se, hicimos varias :D
 * @date 2025-07-03
 */
+
+/** @defgroup Función principal y calculo de energía.
+ * @{
+ */
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -121,3 +126,4 @@ void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G
         }
     }
 }
+/** @} */ // fin del grupo
