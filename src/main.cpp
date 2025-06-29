@@ -3,11 +3,11 @@
 #include <vector>
 #include <Eigen/Dense>
 #include "Cuerpo.h"
+#include "constantes.h" 
 
 using namespace Eigen;
 using namespace std;
 
-const double G = 1; 
 
 int main() {
     int N;

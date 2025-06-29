@@ -1,4 +1,5 @@
 #include "Cuerpo.h"
+#include "constantes.h" 
 
 const double G = 1; // Constante de gravitación universal
 
