@@ -1,16 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comfortaa:wght@300;600&display=swap');
 
 body {
-  background-image: url("fondo_stardey_valley.png");  /* el nombre de tu imagen */
-  background-repeat: no-repeat;
-  background-size: cover;         /* cubre todo el fondo */
-  background-attachment: fixed;   /* para que se quede fija al hacer scroll */
-  background-position: center center;
+  background: linear-gradient(to bottom, #a8dadc 0%, #f1faee 40%, #b7e4c7 100%);
+  background-attachment: fixed;
   font-family: 'Comfortaa', sans-serif;
   margin: 0;
   padding: 0;
   color: #3e2f1c;
 }
+
 
 
 /* === Estilo para el contenido general === */

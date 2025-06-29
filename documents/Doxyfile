@@ -15,7 +15,7 @@ IMAGE_PATH              = docs_assets
 GENERATE_LATEX          = NO
 
 # Carpeta de salida 
-OUTPUT_DIRECTORY        = html 
+OUTPUT_DIRECTORY        = salida_docs
 
 # Incluir documentación privada
 EXTRACT_PRIVATE         = YES
