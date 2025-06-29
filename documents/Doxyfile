@@ -18,4 +18,12 @@ GENERATE_LATEX          = NO
 OUTPUT_DIRECTORY        = salida_docs
 
 # Incluir documentación privada
-EXTRACT_PRIVATE         = YES
+EXTRACT_PRIVATE       = YES
+EXTRACT_STATIC        = YES
+EXTRACT_PROTECTED     = YES
+
+# Mostrar clases y funciones 
+SHOW_INCLUDE_FILES    = YES
+FULL_PATH_NAMES       = NO
+SOURCE_BROWSER = YES
+INLINE_SOURCES = YES
