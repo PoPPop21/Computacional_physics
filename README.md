@@ -19,4 +19,4 @@ Este proyecto implmenta una simulación del problema de N cuerpos que interactua
 
 ## Compilación 
 ```bash 
-make
+make run 
