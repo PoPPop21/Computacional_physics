@@ -1,6 +1,12 @@
 # Ignorar binarios y resultados
 bin/
-results/
+# Ignorar todos los archivos de results/
+results/*
+
+# Pero incluir estos específicos:
+!results/datosN.dat
+!results/energias.dat
+
 *.o
 
 # Ignorar archivos temporales
