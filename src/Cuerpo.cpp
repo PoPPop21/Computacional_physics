@@ -1,7 +1,6 @@
 #include "Cuerpo.h"
 #include "constantes.h" 
 
-const double G = 1; // Constante de gravitación universal
 
 void Cuerpo::Inicie(double m0, double R0, const Vector3d &r0, const Vector3d &V0) {
     m = m0;
