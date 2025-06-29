@@ -1,87 +1,86 @@
-/* === Estilo base === */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comfortaa:wght@300;600&display=swap');
+
 body {
-    background-color: #f4eed7; /* pergamino claro */
-    font-family: 'Verdana', sans-serif;
-    color: #2f2f2f;
-    line-height: 1.6;
-    padding: 10px;
+  background-image: url("fondo_stardey_valley.png");  /* el nombre de tu imagen */
+  background-repeat: no-repeat;
+  background-size: cover;         /* cubre todo el fondo */
+  background-attachment: fixed;   /* para que se quede fija al hacer scroll */
+  background-position: center center;
+  font-family: 'Comfortaa', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #3e2f1c;
 }
 
-/* === Cabecera del proyecto === */
-div.header {
-    background-color: #7ba86d; /* verde musgo suave */
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+/* === Estilo para el contenido general === */
+div.contents {
+  background-color: #ffffffdd;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 1000px;
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+  border: 2px solid #d6ccc2;
 }
 
-div.header h1 {
-    font-size: 32px;
-    font-weight: bold;
+/* === Estilo de títulos === */
+h1, h2, h3, h4 {
+  font-family: 'Press Start 2P', cursive;
+  color: #6d6875;
+  margin-top: 30px;
+  border-bottom: 2px solid #b5838d;
+  padding-bottom: 5px;
+}
+
+/* === Tablas (como las de miembros de clase) === */
+table.directory, table.memberdecls, .memberdecls {
+  background-color: #fefae0;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+}
+
+/* === Código fuente === */
+pre.fragment {
+  background-color: #d5bdaf;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+/* === Enlaces === */
+a {
+  color: #2a9d8f;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #e76f51;
+  text-decoration: underline;
 }
 
 /* === Navegación lateral === */
 div.navpath {
-    background-color: #a6cbd5; /* azul celeste */
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-a.el {
-    color: #3a5f0b;
-    font-weight: bold;
-    text-decoration: none;
-}
-a.el:hover {
-    color: #205003;
-    text-decoration: underline;
-}
-
-/* === Contenido principal === */
-div.contents {
-    background-color: #ffffffdd;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-}
-
-/* === Títulos === */
-h1, h2, h3 {
-    color: #714d2b; /* marrón rústico */
-    border-bottom: 2px solid #d3c4a3;
-    padding-bottom: 5px;
-}
-
-/* === Tablas === */
-table.directory, table.memberdecls {
-    width: 100%;
-    background-color: #fcf7e9;
-    border-collapse: collapse;
-    border: 1px solid #ccc;
-}
-
-table th, table td {
-    padding: 8px;
-    border: 1px solid #aaa;
-}
-
-/* === Código === */
-pre.fragment {
-    background-color: #eee9d6;
-    border: 1px solid #bbb;
-    padding: 10px;
-    border-radius: 6px;
-    font-family: 'Courier New', monospace;
-    font-size: 14px;
+  background-color: #ffcad4;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 1000px;
 }
 
 /* === Footer === */
 div.footer {
-    text-align: center;
-    font-size: 12px;
-    color: #555;
-    margin-top: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  padding: 30px;
+  margin-top: 40px;
 }
