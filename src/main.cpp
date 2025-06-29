@@ -1,3 +1,8 @@
+/**
+* @author Angela Sofia Malagon Palmino & Jhousua Sebastian Albadan Infante
+* @version No se, hicimos varias :D
+* @date 2025-07-03
+*/
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -8,9 +13,19 @@
 using namespace Eigen;
 using namespace std;
 
-//Declaración de la función para calcular energía
+/**
+* @brief Calcula la energía cinética y potencial del sistema de cuerpos.
+* @param cuerpos Vector de cuerpos celestes.
+* @param Ek Referencia para almacenar la energía cinética total.
+* @param Ep Referencia para almacenar la energía potencial total.
+*/
 void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G);
 
+/**
+* @brief Función principal que simula el movimiento de N cuerpos celestes bajo la influencia de la gravedad.
+* @details Solicita al usuario el número de cuerpos, el paso de tiempo y el tiempo máximo de simulación.
+* Luego, inicializa los cuerpos con sus respectivas propiedades y simula su
+*/
 
 int main() {
     int N;
@@ -22,6 +37,11 @@ int main() {
     cout << "Ingrese el tiempo máximo (tmax): ";
     cin >> tmax;
 
+    /**
+    * @brief Vector que almacena los cuerpos celestes.
+    * @details Cada cuerpo se inicializa con su masa, radio, posición y velocidad.
+    * @note Se utiliza un vector de objetos Cuerpo para almacenar las propiedades de cada cuerpo
+    */
     vector<Cuerpo> cuerpos(N);
     for (int i = 0; i < N; ++i) {
         double m, R, x, y, z, Vx, Vy, Vz;
@@ -31,9 +51,16 @@ int main() {
         Vector3d V(Vx, Vy, Vz);
         cuerpos[i].Inicie(m, R, r, V);
     }
+
     ofstream output("results/datosN.dat");
     ofstream energias("results/energiasN.dat");
 
+    /**
+    * @brief inicializa el archivo de salida con los encabezados.
+    * @details El archivo contiene el tiempo, las posiciones y velocidades de cada cuerpo.
+    * @note Se utiliza un formato específico para almacenar los datos de cada cuerpo en cada paso
+    * de tiempo.
+    */
      for (double t = 0; t <= tmax; t += dt) {
         output << t;
         for (auto &c : cuerpos)
@@ -71,7 +98,9 @@ int main() {
     energias.close();
     return 0;
 }
-
+/**
+* @brief Calcula la energía cinética y potencial del sistema de cuerpos.
+*/
 void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G) {
     Ek = 0;
     Ep = 0;
