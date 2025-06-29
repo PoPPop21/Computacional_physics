@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt("results/energias.dat")
+data = np.loadtxt("results/energiasN.dat")
 t = data[:, 0]
 Ek = data[:, 1]
 Ep = data[:, 2]

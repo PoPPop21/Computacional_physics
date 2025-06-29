@@ -8,6 +8,9 @@
 using namespace Eigen;
 using namespace std;
 
+//Declaración de la función para calcular energía
+void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G);
+
 
 int main() {
     int N;
@@ -60,7 +63,7 @@ int main() {
 
         //Para la energía
         double Ek, Ep;
-        CalcEnergias(cuerpos, Ek, Ep, G);
+        CalcEnergia(cuerpos, Ek, Ep, G);
         energias << t << " " << Ek << " " << Ep << " " << (Ek + Ep) << "\n";
 
     }

@@ -2,7 +2,9 @@
 #define CUERPO_H
 
 #include <Eigen/Dense>
+#include <vector>
 using namespace Eigen;
+using std::vector;
 
 /**
 * Clase que representa un cuerpo celeste en el sistema gravitacional.
@@ -21,7 +23,7 @@ public:
     void MuevaR(double dt);
     void MuevaV(double dt, const Vector3d &F_antes);
     //Calculamos la energía
-    void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G);
+    //void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G);
 
     // Getters
     double Getx() const { return r.x(); }
