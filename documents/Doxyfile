@@ -1,0 +1,17 @@
+# 🎀 Nombre del proyecto 
+PROJECT_NAME            = "💎Simulación de N cuerpos con interacción gravitacional entre ellos"
+
+# Directorios de entrada 
+INPUT                   = ./main.cpp ./Cuerpo.cpp ./Cuerpo.h ./constantes.h
+
+# Activar generacion de documentación en HTML 
+GENERATE_HTML           = YES
+
+# Activar generación de LaTex (PDF)
+GENERATE_LATEX          = NO
+
+# Carpeta de salida 
+OUTPUT_DIRECTORY        = documents
+
+# Incluir documentación privada
+EXTRACT_PRIVATE         = YES
