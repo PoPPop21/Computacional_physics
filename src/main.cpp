@@ -29,6 +29,7 @@ int main() {
         cuerpos[i].Inicie(m, R, r, V);
     }
     ofstream output("results/datosN.dat");
+    ofstream energias("results/energiasN.dat");
 
      for (double t = 0; t <= tmax; t += dt) {
         output << t;
@@ -57,7 +58,34 @@ int main() {
             cuerpos[i].MuevaV(dt, F_antes[i]); //Mover velocidades V
         }
 
+        //Para la energía
+        double Ek, Ep;
+        CalcEnergias(cuerpos, Ek, Ep, G);
+        energias << t << " " << Ek << " " << Ep << " " << (Ek + Ep) << "\n";
+
     }
     output.close();
+    energias.close();
     return 0;
+}
+
+void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G) {
+    Ek = 0;
+    Ep = 0;
+    int N = cuerpos.size();
+
+    // Energía cinética
+    for (const auto &c : cuerpos) {
+        Vector3d v(c.GetVx(), c.GetVy(), c.GetVz());
+        Ek += 0.5 * c.GetM() * v.squaredNorm();
+    }
+
+    // Energía potencial gravitacional
+    for (int i = 0; i < N; ++i) {
+        for (int j = i + 1; j < N; ++j) {
+            Vector3d rij = cuerpos[j].GetPos() - cuerpos[i].GetPos();
+            double dist = rij.norm();
+            Ep -= G * cuerpos[i].GetM() * cuerpos[j].GetM() / (dist + 1e-10); // evitar división por cero
+        }
+    }
 }

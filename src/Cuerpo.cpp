@@ -33,3 +33,5 @@ void Cuerpo::MuevaV(double dt,  const Vector3d &F_antes) {
     // Actualiza la velocidad del cuerpo
     V += 0.5 * (F + F_antes) / m * dt; // (Verlet)
 }
+
+

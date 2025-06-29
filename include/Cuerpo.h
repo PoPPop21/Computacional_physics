@@ -20,6 +20,8 @@ public:
     void AdicioneFuerzaGravitacional(Cuerpo &otro);
     void MuevaR(double dt);
     void MuevaV(double dt, const Vector3d &F_antes);
+    //Calculamos la energía
+    void CalcEnergia(const vector<Cuerpo> &cuerpos, double &Ek, double &Ep, double G);
 
     // Getters
     double Getx() const { return r.x(); }
@@ -34,6 +36,8 @@ public:
     double GetR() const { return R; }
     void AddForce(const Vector3d &f) { F += f; }
     Vector3d GetPos() const { return r; }
+    
+
 };
 
 #endif // CUERPO_H
