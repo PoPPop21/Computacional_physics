@@ -14,8 +14,6 @@ results/*
 *.swp
 
 # Ignorar documentación generada
-docs/
-html/
 latex/
 
 # Archivos de usuario o caché
