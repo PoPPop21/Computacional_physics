@@ -7,7 +7,7 @@
 using namespace Eigen;
 using namespace std;
 
-const double G = 6.67430e-11; 
+const double G = 1; 
 
 int main() {
     int N;
