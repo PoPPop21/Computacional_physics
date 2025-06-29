@@ -1,0 +1,89 @@
+/* --- Estilo base --- */
+body {
+	background-color: #f4eed7; 
+	font-family: 'Verdana', sans-serif;
+	color: "2f2f2f";
+	line-height: 1.6;
+	padding: 10px;
+	margin: 0;
+}
+
+/* --- Estilo de los encabezados --- */
+div.header {
+	background-color: #7ba86d;
+	color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+div.header h1 {
+	font-size: 32px;
+	font-weight: bold;;
+}
+
+/* Navegación lateral */
+din.navpath {
+	background-color: #a6cbd5;
+	border-radius: 8px;
+	padding: 10px;
+	margin-bottom: 15px;
+}
+
+a.el {
+	color: #3a5f0b;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.el:hover {
+	color: #205003;
+	text-decoration: underline;
+}
+
+/* --- Contenido primcipal --- */
+div.contents {
+	background-color: #ffffffdd;
+	border-radius: 12px;
+	border: 1px solid #ddd;
+	padding: 20px;
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* === Títulos === */
+h1, h2, h3 {
+    color: #714d2b; /* marrón rústico */
+    border-bottom: 2px solid #d3c4a3;
+    padding-bottom: 5px;
+}
+
+/* === Tablas === */
+table.directory, table.memberdecls {
+    width: 100%;
+    background-color: #fcf7e9;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+table th, table td {
+    padding: 8px;
+    border: 1px solid #aaa;
+}
+
+/* === Código === */
+pre.fragment {
+    background-color: #eee9d6;
+    border: 1px solid #bbb;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+}
+
+/* === Footer === */
+div.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    margin-top: 30px;
+}
