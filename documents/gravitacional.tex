@@ -1,0 +1,268 @@
+ % Plantilla creada por Sebastian Manrique.
+
+% Las funciones \INPUT representan la inserción de código .tex al documento principal, de esta manera podemos reducir varias líneas de código que en realidad, no se modifican con frecuencia.
+
+\input{lib/config.tex}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+\onecolumn\begin{@twocolumntrue}
+    \begin{minipage}{0.3\textwidth}{\def\svgwidth{0.97\columnwidth}\input{fig/Escudo_UD.eps_tex}}
+    \end{minipage}
+    \vspace{10pt}
+    \begin{minipage}{0.677\textwidth}
+        \begin{center}
+            \vspace{12mm}
+        
+            \Large{\textbf {{PROBLEMA DE \textit{N}-CUERPOS}}
+            \vspace{3mm}
+            
+            \large{\textbf  Albadan I., Jhousua S. 20221107049, Malagón P., Angela S. 20221107081 }}
+            \vspace{2mm}
+    
+            \large{\textit{Física computacional II, Programa académico de Física, Universidad Distrital Francisco José de Caldas}}
+            \vspace{1mm}
+            
+            Junio 2025 % Formato (mes) de (año)
+        \end{center}
+\vspace{5pt}
+\end{minipage}
+
+\centerline{\rule{0.95\textwidth}{0.4pt}} % Línea negra
+\end{@twocolumntrue}
+
+\begin{center} \Large \textbf{Resumen} \end{center}
+El presente documento expone las consideraciones teóricas y prácticas necesarias para la simulación del problema de \(N\) cuerpos, partiendo de la formulación clásica de la mecánica de Newton y complementando con el enfoque de las ecuaciones de Hamilton. Se aborda la determinación de las trayectorias y velocidades de cada cuerpo mediante la resolución numérica del sistema, empleando el método de Verlet con el fin de mejorar la estabilidad y precisión de las soluciones obtenidas. Asimismo, se detalla el algoritmo utilizado por el \textit{solver} implementado, junto con un ejemplo ilustrativo que muestra un caso de estabilidad en el sistema simulado.
+
+
+
+
+\hspace{12pt}\begin{minipage}[H]{0.95\textwidth}
+\end{minipage}
+\hspace{12pt}\begin{minipage}[H]{0.95\textwidth}
+\textbf{Palabras claves:} Problema de N cuerpos, Mecánica de Newton, Ecuaciones de Hamilton, Método de Verlet, Simulación numérica, Estabilidad orbital, Algoritmos de dinámica.
+
+\end{minipage}
+
+\begin{center} \Large \textbf{Abstract} \end{center}
+This document presents the theoretical and practical considerations necessary for the simulation of the \(N\)-body problem, starting from the classical formulation of Newtonian mechanics and complemented by the Hamiltonian equations approach. It addresses the determination of the trajectories and velocities of each body through the numerical resolution of the system, employing the Verlet method to enhance the stability and accuracy of the solutions obtained. Additionally, the algorithm followed by the implemented solver is described in detail, along with an illustrative example demonstrating a case of stability in the simulated system.
+
+\hspace{12pt}\begin{minipage}[H]{0.95\textwidth}
+\end{minipage}
+\hspace{12pt}\begin{minipage}[H]{0.95\textwidth}
+\textbf{Keywords:} N-body problem,
+Newtonian mechanics,
+Hamiltonian equations,
+Verlet method,
+Numerical simulation,
+Orbital stability,
+Dynamics algorithms.
+
+
+\end{minipage} \\
+
+
+\centerline{\rule{0.95\textwidth}{0.4pt}}
+\vspace{15pt}
+
+
+\twocolumn
+
+\section{Introducción}
+
+El problema de \(N\) cuerpos consiste en determinar la evolución temporal de un sistema formado por \(N\) partículas masivas que interactúan entre sí a través de fuerzas mutuas, típicamente gravitacionales. Este problema fue formulado inicialmente por Isaac Newton en el siglo XVII, en su intento por comprender el movimiento de los cuerpos celestes bajo la influencia de la ley de gravitación universal. 
+
+Para el caso particular de dos cuerpos, el problema admite una solución analítica exacta, dando lugar a las conocidas órbitas elípticas, parabólicas o hiperbólicas, dependiendo de la energía y el momento angular del sistema. Sin embargo, cuando el número de cuerpos es mayor o igual a tres, el sistema se vuelve no integrable en general, y solo en ciertos casos especiales se pueden encontrar soluciones exactas. 
+
+El estudio del problema de \(N\) cuerpos es fundamental en diversas áreas de la física y la astronomía, como en la dinámica estelar, la formación de sistemas planetarios, y la simulación de cúmulos y galaxias. Debido a su complejidad, se recurre a métodos numéricos para aproximar la trayectoria y el comportamiento dinámico de cada partícula a lo largo del tiempo. Entre estos métodos, destacan los integradores de tipo Verlet y Runge-Kutta, los cuales permiten una aproximación precisa y estable a la evolución del sistema. 
+
+El análisis del problema no solo permite predecir la posición futura de los cuerpos, sino también entender fenómenos caóticos, resonancias y estabilidad orbital, aspectos clave en la mecánica celeste moderna.
+
+
+\section{Marco Teórico }
+\subsection{El modelo de los N-cuerpos}
+
+A lo largo de la historia, en la física se han planteado problemas que trascienden épocas y fronteras —geográficas, intelectuales, económicas, entre otras—. Un ejemplo de esto son los problemas del milenio, propuestos por matemáticos y acompañados de incentivos económicos. Muchos de estos problemas son consecuencia directa del avance de la física en su intento por describir los fenómenos naturales.
+
+En este contexto, podemos mencionar la ecuación de Navier-Stokes, la cual describe la mecánica de un fluido no ideal y cuya solución completa aún representa un gran desafío.
+
+
+Hasta este punto, hemos resaltado que la física es una ciencia experta en plantear problemas cuya solución no es evidente. Uno de los ejemplos más notables es el problema de los N cuerpos, formulado inicialmente por Isaac Newton en el siglo XVII. Este problema busca determinar las posiciones y velocidades de N cuerpos masivos que interactúan entre sí a través de la fuerza gravitacional que generan.
+
+Siguiendo la dinámica de un cuerpo \textit{i}-ésimo, su comportamiento se describe de la siguiente forma:
+
+
+\begin{equation}\label{2da ley}
+    \mathbf{F}_i=m_i\ddot{\mathbf{r}_i}
+\end{equation}
+
+Ahora teniendo en cuenta que las únicas interacciones que tendremos en cuenta son la gravitacionales ($m_n>0$) entonces tenemos que:
+
+\begin{equation}\label{gravitacion}
+    \mathbf{F}_{i,j}=-\frac{Gm_im_j}{\left\|\mathbf{r}_j -\mathbf{r}_i\right \|^3}(\mathbf{r}_j -\mathbf{r}_i)
+\end{equation}
+
+Ahora teniendo en cuenta a (\ref{gravitacion}), la usamos en (\ref{2da ley}) que nos describe la dinámica de nuestra \textit{i}-esima particula.
+
+\begin{equation*}
+    \mathbf{F}_i=m_i\ddot{\mathbf{r}}_i=-\sum_{j=1, i\neq j}^N\frac{Gm_im_j}{\left\|\mathbf{r}_j -\mathbf{r}_i\right \|^3}(\mathbf{r}_j -\mathbf{r}_i)
+\end{equation*}
+Consecuencia de que la fuerza gravitacional sea de tipo conservativa, podremos asociarle un potencial tal que:
+
+\begin{equation*}
+    m_i\ddot{\mathbf{r}}_i=-\frac{\partial U}{\partial \mathbf{r}_i}
+\end{equation*}
+
+donde
+
+\begin{equation}
+    U=-\sum_{1\leq i<j\leq N} \frac{Gm_im_j}{\left\|\mathbf{r}_j -\mathbf{r}_i\right \|}
+\end{equation}
+
+Ahora creamos una representación matricial para nuestro sistema de ecuaciones diferenciales tal que:
+
+\begin{equation}\label{ecuacion general}
+    M\ddot{\mathbf{r}}=-\frac{\partial U}{\partial \mathbf{r}}
+\end{equation}
+
+con (\ref{ecuacion general}), no podemos deducir completamente las incognitas posición y velocidad, por ello usaremos una ecuación de Hamilton teniendo en cuenta que el hamiltoniano clasico es:
+
+\begin{equation*}
+    H=T+U=\sum^N_{i=1}\frac{\mathbf{p}_i^2}{2m_i}-\sum_{1\leq i<j}^N \frac{Gm_im_j}{\left\|\mathbf{r}_j -\mathbf{r}_i\right \|}
+\end{equation*}
+
+y usaremos la siguiente ecuación de Hamilton:
+\begin{equation}\label{Hamilton}
+    \dot{\mathbf{r}}_i=\frac{\partial H}{\partial \mathbf{p}_i}
+\end{equation}
+
+Teniendo en cuenta los desarrollado en \ref{ecuacion general} y \ref{Hamilton}, podemos resolver el problema de las 6N ecuaciones que en la practica se emplean los métodos númericos para resolverla.
+
+
+
+\subsection{Método de Verlet}
+Este es un método de corrección para el cálculo de una función que posee una dependencia fuertemente ligada con su derivada de segundo orden. En este caso, dicha dependencia se manifiesta a través de la segunda ley de Newton, lo cual nos conduce a la ecuación general (\ref{ecuacion general}).
+
+\begin{equation}\label{verlet}
+    dx=v_0dt+\frac{1}{2}adt^2
+\end{equation}
+
+La ecuación de Verlet (\ref{verlet}) se inspira en la ecuación de un sistema en movimiento rectilíneo uniformemente acelerado, ya que comparte similitudes en la descripción de la trayectoria y el análisis del movimiento.
+
+El uso del método de Verlet es fundamental para problemas que presentan una dependencia explícita de la segunda derivada. Aunque actualmente se puede generalizar mediante expansiones de orden \textit{N}, su aplicación ha estado tradicionalmente muy vinculada al estudio de problemas en mecánica.
+
+\section{Algoritmo}
+En este punto, es claro que para la descripción de cualquier sistema mecánico se necesitan condiciones iniciales. Estas son definidas por el usuario y resultan ser las más intuitivas: la posición inicial de cada cuerpo ($\mathbf{r_{0}}_i$), considerando que se encuentran en un sistema cartesiano y un espacio euclidiano.  
+
+Asimismo, se solicita al usuario la velocidad inicial de cada cuerpo ($\mathbf{\dot{r}_{0}}_i$), junto con la descripción de la partícula, como su masa ($m_i$) y su radio ($R_i$), asumiendo que se tratan de esferas perfectas. Finalmente, se especifican los intervalos de tiempo empleados, tales como el tamaño del paso temporal ($dt$) y la duración total de la simulación ($t_{\text{max}}$).
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.08]{graficas/Editor _ Mermaid Chart-2025-06-30-014558.png}
+    \caption{Diagrama de Flujo del software}
+    \label{diagram flow}
+\end{figure}
+
+En cuanto al algoritmo empleado para la solución, este se representa mediante el diagrama de flujo (véase la Fig. \ref{diagram flow}), el cual está conformado por varias partes que mencionamos a continuación:
+\begin{itemize}
+    \item Se parte del hecho de que, al ejecutarse el código, este solicita los datos de tiempo, posición, velocidad y propiedades físicas de cada cuerpo del sistema.
+    \item Luego, se inicializan los vectores correspondientes para proceder con el proceso de recurrencia.
+    \item A continuación, se validan los datos, siendo el más fundamental el relacionado con el tiempo, para garantizar la continuidad del procedimiento.
+    \item Dependiendo de si se ha alcanzado el umbral de iteraciones, se guardan los datos. En caso contrario, se procede a actualizar los vectores privados de cada objeto. En este punto se añaden los efectos de la interacción gravitacional, la cual modifica la posición y velocidad de cada cuerpo, de tal forma que, con la posición en el instante \textit{i}-ésimo, se calcula la energía, la cual es invariante en este sistema.
+    \item Finalmente, se actualiza el instante \textit{i}-ésimo para verificar si se ha alcanzado el tiempo máximo de simulación.
+\end{itemize}
+
+
+
+\section{Resultados y análisis}
+Para este caso solicitamos a la inteligencia artificial \textit{ChatGPT}, alguno datos recomendados para la busqueda de algunas orbitas estable durante algunos intervalos de tiempo, en este caso los datos ingresados fueron:
+
+\begin{equation}
+    \mathbf{r}_1=\begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix}, \ \mathbf{r}_2=\begin{bmatrix}
+        -0.5 \\ 0.866
+    \end{bmatrix}, \ \mathbf{r}_3=\begin{bmatrix}
+        -0.5 \\ - 0.866
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    m_1=m_2=m_3=1;  \ dt= 10^{-3}
+\end{equation}
+
+\begin{equation}
+    \mathbf{v}_1=\begin{bmatrix}
+        0 \\ 0.5
+    \end{bmatrix},
+    \  \mathbf{v}_2=\begin{bmatrix}
+        -0.433 \\ -0.25
+    \end{bmatrix},
+    \ \mathbf{v}_3=\begin{bmatrix}
+        0.433 \\ -0.25
+    \end{bmatrix}
+\end{equation}
+
+En este caso, se emplean las gráficas de posición y de los valores energéticos a lo largo de la simulación. Aquí se comparan para el caso en que \( t_{\text{max}} = 30 \).
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.25]{graficas/Imagen de WhatsApp 2025-06-29 a las 22.23.56_01b85766.jpg}
+    \caption{Gráfica (x, y) con $t_{max}=30$.}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.23]{graficas/Imagen de WhatsApp 2025-06-29 a las 22.24.35_9d363b44.jpg}
+    \caption{Gráfica (E, t) con $t_{max}=30$}
+    \label{fig:enter-label}
+\end{figure}
+En este caso, en las Figuras 2 y 3 se observa una estabilidad evidente al inicio de la simulación. Por esta razón, se decide realizar la simulación con un tiempo máximo reducido, eligiendo \( t_{\text{max}} = 20 \). A partir de esta configuración, se obtienen las siguientes gráficas:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.23]{graficas/energias tres cuerpos.jpg}
+    \caption{Gráfica (E, t) con $t_{max}=20$.}
+    \label{fig:enter-label}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.23]{graficas/posicion trescuerpos.jpg}
+    \caption{Gráfica (x, y) con $t_{max}=20$.}
+    \label{fig:enter-label}
+\end{figure}
+
+En el par de gráficas presentadas (Figura 4 y Figura 5), se observan situaciones estables.
+
+En la Figura 4, se cumple el principio de conservación de la energía, donde $E = \text{constante}$, principalmente debido al intercambio entre energía potencial gravitacional y energía cinética. En el caso de la Figura 5, se presentan órbitas en las que aún existen ligaduras gravitacionales en el sistema, evidenciadas por sus trayectorias convergentes.
+
+
+
+\input{analisis}
+
+
+
+
+\section*{Bibliografía}
+
+Blanco López, A. (2019). El problema de los n-cuerpos y su paralelización.
+
+
+
+Pons Ferrer, M. (2024, July 4). Problema de los N cuerpos (Treball Final de Grau). UPC, Facultat de Matemàtiques i Estadística, Departament de Matemàtiques. Retrieved from \url{http://hdl.handle.net/2117/415486}
+
+
+Río Cristóbal, M. D. (2023). El método de Störmer-Verlet. Propiedades y aplicaciones.
+
+
+Simó, C. (1976). El problema de n cuerpos. Publicacions de la Secció de Matemàtiques, (2), 38-68.
+
+
+
+\end{document}
