@@ -34,9 +34,13 @@ Este proyecto simula múltiples caminatas aleatorias normalizadas en 2D, para va
 ```bash
 make
 
+```
+
+```bash
 - Visualización de resultados 
     - python3 scripts/plot.py
     - gnuplot scripts/plot.gp
-
+```
+```bash
 - Documentación 
     - make doc
