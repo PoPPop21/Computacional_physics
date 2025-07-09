@@ -1,0 +1,25 @@
+# Entrada principal
+PROJECT_NAME           = "Caminata Aleatoria Normalizada (NRRW)"
+PROJECT_BRIEF          = "Simulación de Caminatas Aleatorias en 2D usando C++ y POO"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = include src
+FILE_PATTERNS          = *.h *.cpp
+RECURSIVE              = YES
+
+# Formato de salida
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+GENERATE_LATEX         = NO
+
+# Estilo de comentarios
+JAVADOC_AUTOBRIEF      = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+# Idioma
+OUTPUT_LANGUAGE        = Spanish
+
+# Marcado automático de código fuente
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
