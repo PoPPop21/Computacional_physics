@@ -17,6 +17,10 @@ void NRRW::realizar_caminata() {
         paso_aleatorio();
 }
 
+double NRRW::obtener_R2() const {
+    return x*x + y*y;
+}
+
 void NRRW::paso_aleatorio() {
     int direccion = distribucion(generador);
     switch (direccion) {
@@ -26,10 +30,6 @@ void NRRW::paso_aleatorio() {
         case 3: y -= 1.0; break;
     }
     trayectoria.push_back({x, y});
-}
-
-double NRRW::obtener_R2() const {
-    return x * x + y * y;
 }
 
 const vector<pair<double, double>>& NRRW::obtener_trayectoria() const {
@@ -42,20 +42,5 @@ void NRRW::guardar_trayectoria_csv(const string& filename) const {
     for (const auto& p : trayectoria)
         archivo << p.first << "," << p.second << "\n";
     archivo.close();
-}
-
-
-void NRRW::paso_aleatorio() {
-    int direccion = distribucion(generador);
-    switch (direccion) {
-        case 0: x += 1.0; break; // derecha
-        case 1: x -= 1.0; break; // izquierda
-        case 2: y += 1.0; break; // arriba
-        case 3: y -= 1.0; break; // abajo
-    }
-    trayectoria.push_back({x, y});
-}
-
-double NRRW::obtener_R2() const {
-    return x*x + y*y;
+    cout << "Trayectoria guardada en '" << filename << "'" << endl;
 }

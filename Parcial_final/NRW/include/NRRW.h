@@ -6,6 +6,7 @@
 #include <string> // Para std::string
 #include <utility> // Para std::pair
 #include <fstream>
+#include <iostream>
 
 using namespace std;
 
@@ -17,6 +18,7 @@ public:
     
     const vector<pair<double, double>>& obtener_trayectoria() const;
     void guardar_trayectoria_csv(const string& filename) const;
+    void paso_aleatorio();
 
 private:
     int N; // Número de pasos
@@ -26,7 +28,7 @@ private:
 
     vector<pair<double, double>> trayectoria;
 
-    void paso_aleatorio();
+
 };
 
 #endif
