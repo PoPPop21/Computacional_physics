@@ -8,7 +8,7 @@
  * @{
  */
 
-#include "Cuerpo.h"
+#include "Carga.h"
 #include "constantes.h" 
 /**
 * @brief Inicializa el cuerpo con carga, radio, posición y velocidad.

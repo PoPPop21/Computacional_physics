@@ -13,7 +13,7 @@
  #include <iomanip> // setprecision
 #include <vector>
 #include <Eigen/Dense>
-#include "Cuerpo.h"
+#include "Carga.h"
 #include "constantes.h" 
 
 using namespace Eigen;
