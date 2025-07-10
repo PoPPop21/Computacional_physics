@@ -1,4 +1,4 @@
-# Caminata aleatoria normalizada en 2D 🎢
+# Caminata aleatoria normalizada en 2D 🎢🎄
 
 Este proyecto simula múltiples caminatas aleatorias normalizadas en 2D, para valores N enteros múltiplos de 10. 
 
