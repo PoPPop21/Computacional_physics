@@ -1,0 +1,31 @@
+# 🎀 Nombre del proyecto 
+PROJECT_NAME            = "Simulación de N-Partículas con 
+                        interacción eléctrica entre ellos"
+
+# Directorios de entrada 
+INPUT                   = ../src ../include
+
+# Activar generacion de documentación en HTML 
+GENERATE_HTML           = YES
+HTML_STYLESHEET         = stylesheet.css
+HTML_HEADER             = header.html
+HTML_FOOTER             = footer.html
+IMAGE_PATH              = docs_assets
+
+# Activar generación de LaTex (PDF)
+GENERATE_LATEX          = NO
+
+# Carpeta de salida 
+OUTPUT_DIRECTORY        = salida_docs
+
+# Incluir documentación privada
+EXTRACT_PRIVATE       = YES
+EXTRACT_STATIC        = YES
+EXTRACT_PROTECTED     = YES
+
+# Mostrar clases y funciones 
+SHOW_INCLUDE_FILES    = YES
+FULL_PATH_NAMES       = NO
+SOURCE_BROWSER = YES
+INLINE_SOURCES = YES
+ENABLE_GROUPING = YES

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Comfortaa:wght@300;600&display=swap');
+
+body {
+  background: linear-gradient(to bottom, #0c1cff 0%, #55adeb 40%, #29c637 60%, #044e0b 100% );
+  background-attachment: fixed;
+  font-family: 'Comfortaa', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #3e2f1c;
+}
+
+
+
+/* === Estilo para el contenido general === */
+div.contents, .fragment, .comment {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #3e2f1c;
+}
+
+/* === Estilo de títulos === */
+h1, h2, h3, h4 {
+  font-family: 'Press Start 2P', cursive;
+  color: #6d6875;
+  font-size: 16px;
+  line-height: 1.4;
+  margin-top: 30px;
+  border-bottom: 2px solid #b5838d;
+  padding-bottom: 5px;
+}
+
+/* === Tablas (como las de miembros de clase) === */
+table.directory, table.memberdecls, .memberdecls {
+  background-color: #fefae0;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 12px;
+}
+
+/* === Código fuente === */
+pre.fragment {
+  background-color: #d5bdaf;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+/* === Enlaces === */
+a {
+  color: #2a9d8f;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #e76f51;
+  text-decoration: underline;
+}
+
+/* === Navegación lateral === */
+div.navpath {
+  background-color: #ffcad4;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 1000px;
+}
+
+/* === Footer === */
+div.footer {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  padding: 30px;
+  margin-top: 40px;
+}
+
+div.note {
+  background-color: #fff3cd;
+  border-left: 5px solid #ffeeba;
+  padding: 10px;
+  margin: 10px 0;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+div.warning {
+  background-color: #f8d7da;
+  border-left: 5px solid #f5c6cb;
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #721c24;
+}
+
+div.todo {
+  background-color: #d1ecf1;
+  border-left: 5px solid #bee5eb;
+  padding: 10px;
+  margin: 10px 0;
+  font-style: italic;
+}
+
+.comment, .contents {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+}
+
+.project-title {
+  font-family: 'Press Start 2P', cursive; /* O la fuente que prefieras */
+  font-size: 1.2em;
+  color: #4e148c;
+  text-align: center;
+  margin-top: 20px;
+}
