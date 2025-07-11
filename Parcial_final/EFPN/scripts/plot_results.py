@@ -8,13 +8,13 @@ print(f"Current working directory (Python): {os.getcwd()}")
 # ---------------------------------------------
 
 # Cargar datos de la funcion de particion
-data_Z = np.loadtxt("../results/funcion_particion.dat")
+data_Z = np.loadtxt("results/funcion_particion.dat")
 kBT_values_Z = data_Z[:, 0]
 Z_exact_values = data_Z[:, 1]
 Z_mc_values = data_Z[:, 2]
 
 # Cargar datos de la energia media
-data_E = np.loadtxt("../results/energia_media.dat")
+data_E = np.loadtxt("results/energia_media.dat")
 kBT_values_E = data_E[:, 0]
 E_exact_values = data_E[:, 1]
 E_mc_values = data_E[:, 2]
@@ -28,7 +28,7 @@ plt.ylabel('$Z$')
 plt.title('Función de Partición para un Sistema de Dos Niveles')
 plt.legend()
 plt.grid(True)
-plt.savefig('../results/funcion_particion.png')
+plt.savefig('results/funcion_particion.png')
 plt.show()
 
 # Graficar Energia Media
@@ -40,5 +40,5 @@ plt.ylabel('$\\langle E \\rangle / \\epsilon$')
 plt.title('Energía Media para un Sistema de Dos Niveles')
 plt.legend()
 plt.grid(True)
-plt.savefig('../results/energia_media.png')
+plt.savefig('results/energia_media.png')
 plt.show()
