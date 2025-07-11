@@ -18,7 +18,7 @@ private:
 
 public:
 // Constructor 
-    SistemaDosNiveles(double epsilon_val, double kBT_val)
+    SistemaDosNiveles(double epsilon_val, double kBT_val);
 
     // Métodos para calcular propiedades exactas
     double calcularFuncionParticionExacta() const;

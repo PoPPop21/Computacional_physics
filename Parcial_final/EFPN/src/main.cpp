@@ -31,8 +31,8 @@ int main() {
         return 1;
     }
 
-    for (int i = 0; i < num_puntos_kBT; ++i) {
-        double kBT = kBT_min + (kBT_max - kBT_min) * i / (num_puntos_kBT - 1);
+    for (int i = 0; i < num_puntos_kbt; ++i) {
+        double kBT = kbt_min + (kbt_max - kbt_min) * i / (num_puntos_kbt - 1);
 
         SistemaDosNiveles sistema(epsilon, kBT);
 
