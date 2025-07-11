@@ -1,16 +1,17 @@
 #include <iostream>
+#include <chrono> // para la hora actual
 #include "NRRW.h"
 
 using namespace std;
 
 int main() {
-    int pasos = 100;
-    NRRW caminata(100, 42);
+    int pasos = 1000;
+    unsigned semilla = chrono::system_clock::now().time_since_epoch().count();
+    NRRW caminata(pasos, semilla);  // ← SEMILLA DIFERENTE CADA VEZ
 
-
-    for(int i = 0; i < pasos; ++i)
-        caminata.paso_aleatorio();
-
+    caminata.realizar_caminata();  // ← ¡No olvides generar la caminata!
     caminata.guardar_trayectoria_csv("results/trayectoria.csv");
+    
+    cout << "Trayectoria guardada en 'results/trayectoria.csv'\n";
     return 0;
 }

@@ -20,6 +20,7 @@ public:
     void guardar_trayectoria_csv(const string& filename) const;
     void paso_aleatorio();
 
+
 private:
     int N; // Número de pasos
     double x, y; // Posición actual
