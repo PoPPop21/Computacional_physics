@@ -6,7 +6,7 @@ Este proyecto implementa una simulación del método de Monte Carlo para un sist
 
 El proyecto sigue una estructura modular para facilitar la organización y el desarrollo:
 
-
+```bash
 proyecto_montecarlo/
 ├── src/
 │   ├── main.cpp                 # Archivo principal del programa C++
@@ -26,7 +26,7 @@ proyecto_montecarlo/
 ├── bin/                         # Directorio para el ejecutable compilado
 ├── Makefile                     # Archivo para automatizar la compilación y ejecución
 └── README.md                    # Este archivo
-
+```
 
 ## Teoría Implementada 🎎
 
