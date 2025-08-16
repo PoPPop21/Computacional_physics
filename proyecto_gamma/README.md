@@ -48,4 +48,5 @@ __*Aplicaciones:*__
 
 ## 💐Autoras
 [Laura Isabel Nieto] - *Estudiante de Física de la Universidad Distrital Francisco José de Caldas* 
+
 [Angela Sofia Malagon Palomino] - *Estudiante de Física de la Universidad Distrital Francisco José de Caldas*
