@@ -21,7 +21,7 @@ __*Aplicaciones:*__
 - Compilador c++
 
 ## 🧱Estructura del proyecto 
-Proyecto_Gamma/
+```Proyecto_Gamma/
 │
 ├── 0_Referencias/       # Papers, libros y normas
 ├── 1_Teoria/            # Notas y fórmulas teóricas
@@ -37,6 +37,7 @@ Proyecto_Gamma/
 │   └── analisis/        # Scripts de ROOT / Python
 ├── 4_Informe/           # Reportes y presentaciones
 └── README.md            # Documentación principal
+```
 
 ## 🎀Compilación y ejecución 
 
